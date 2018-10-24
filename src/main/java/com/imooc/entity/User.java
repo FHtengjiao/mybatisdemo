@@ -18,6 +18,13 @@ public class User {
     private Integer userStatus;
     private String remark;
 
+    public User() {
+    }
+
+    public User(Integer id) {
+        this.id = id;
+    }
+
     public User(Integer id, String username, String password, String nickname, Integer age, String gender, String phone, String email, Date createTime, Date updateTime, Date lastLoginTime, Integer userStatus, String remark) {
         this.id = id;
         this.username = username;
@@ -32,6 +39,17 @@ public class User {
         this.lastLoginTime = lastLoginTime;
         this.userStatus = userStatus;
         this.remark = remark;
+    }
+
+    public User(Integer id, String username, String password, String nickname, String phone, String email, Date createTime, Integer userStatus) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+        this.phone = phone;
+        this.email = email;
+        this.createTime = createTime;
+        this.userStatus = userStatus;
     }
 
     public Integer getId() {
@@ -161,5 +179,24 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getUsername(), getPassword(), getNickname(), getAge(), getGender(), getPhone(), getEmail(), getCreateTime(), getUpdateTime(), getLastLoginTime(), getUserStatus(), getRemark());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", lastLoginTime=" + lastLoginTime +
+                ", userStatus=" + userStatus +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,46 +39,30 @@
                 <th>用户状态</th>
                 <th>操作</th>
             </tr>
+            <c:forEach var="user" items="${usersList}">
             <tr>
-                <td>1</td>
-                <td>admin</td>
-                <td>小明</td>
-                <td>admin@imooc.com</td>
-                <td>12345678901</td>
-                <td>2018-01-01 13:12:09</td>
-                <td>正常</td>
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${user.nickname}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
+                <td><fmt:formatDate value="${user.createTime}"></fmt:formatDate></td>
+                <c:if test="${user.userStatus==0}">
+                    <td>正常</td>
+                </c:if>
+                <c:if test="${user.userStatus==1}">
+                    <td>锁定</td>
+                </c:if>
+                <c:if test="${user.userStatus==2}">
+                    <td>删除</td>
+                </c:if>
                 <td>
-                    <a href="">查看</a>
-                    <a href="">修改</a>
-                    <a href="">删除</a>
-                </td>
-            </tr><tr>
-                <td>1</td>
-                <td>admin</td>
-                <td>小明</td>
-                <td>admin@imooc.com</td>
-                <td>12345678901</td>
-                <td>2018-01-01 13:12:09</td>
-                <td>正常</td>
-                <td>
-                    <a href="">查看</a>
-                    <a href="">修改</a>
-                    <a href="">删除</a>
-                </td>
-            </tr><tr>
-                <td>1</td>
-                <td>admin</td>
-                <td>小明</td>
-                <td>admin@imooc.com</td>
-                <td>12345678901</td>
-                <td>2018-01-01 13:12:09</td>
-                <td>正常</td>
-                <td>
-                    <a href="">查看</a>
+                    <a href="${pageContext.request.contextPath}/findOne?id=${user.id}">查看</a>
                     <a href="">修改</a>
                     <a href="">删除</a>
                 </td>
             </tr>
+            </c:forEach>
         </table>
     </div>
 </div>
